@@ -1,0 +1,52 @@
+PSEUDOCODE(DAY OF THE WEEK)
+
+BEGIN
+
+FUNCTION is_leap_year(year)
+
+    IF year % 400 = 0
+      RETURN TRUE
+    ELSE IF year % 100 = 0
+      RETURN FALSE
+    ELSE IF year % 4 = 0
+      RETURN TRUE
+    ELSE 
+      RETURN FALSE
+    END IF  
+
+END FUNCTION
+
+FUNCTION get_day_of_week(month, day, year)
+
+  GET the month code last
+
+  last_two = year % 100
+
+  first = last_two / 12
+  second = last_ % 12
+  third = second  / 4
+
+  total = first + second + third + day + month_code
+
+  CHECK if a leap_year or century offset is needed
+
+  ADD the correct offset
+
+  result = total % 7
+
+  FIND the day using the result
+
+  RETURN the day 
+
+END FUNCTION
+
+START main 
+
+    TEST the leap_year function
+    TEST the five dates
+
+END main
+
+STOP
+
+
