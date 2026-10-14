@@ -1,26 +1,27 @@
 # Author: Sibonile
 
-  def is_leap_year(year):
-
+def is_leap_year(year):
     if year % 4 == 0:
         if year % 100 == 0:
             if year % 400 == 0:
-               print("True")
+                return True
             else:
-                print("False")
+                return False
         else:
-            print("True")
+            return True
     else:
-        print("False")
-
-user_year = int(input("enter a year: "))
-
- if is_leap_year(user_year):
- else:
-     print(f"{user_year} is not leap year.")
+        return False
 
 
-def get_day_of_the_week(month, day, year)0:
+user_year = int(input("Enter a year: "))
+
+if is_leap_year(user_year):
+    print(f"{user_year} is a leap year.")
+else:
+    print(f"{user_year} is not a leap year.")
+
+
+def get_day_of_the_week(month, day, year):
     month_codes = [0, 1, 4, 4, 0, 2, 5, 0, 3, 6, 1, 4, 6]
 
     last_two = year % 100
@@ -30,36 +31,26 @@ def get_day_of_the_week(month, day, year)0:
 
     total = first + second + third + day + month_codes[month]
 
+    # Leap year adjustment
     if is_leap_year(year) and (month == 1 or month == 2):
-        total = total + 6
+        total -= 1
 
-    if year >= 1600 and year <= 1699:
-        total = total + 6
-    elif year >= 1700 and year <= 1799:
-        total = total + 4
-    elif year >= 1800 and year <= 1899:
-        total = total + 2
-    elif year >= 2000 and year <= 2099:
-        total = total + 6
-    elif year >= 2100 and year <= 2199:
-        total = total + 4
+    # Century codes
+    if 1600 <= year <= 1699:
+        total += 6
+    elif 1700 <= year <= 1799:
+        total += 4
+    elif 1800 <= year <= 1899:
+        total += 2
+    elif 2000 <= year <= 2099:
+        total += 6
+    elif 2100 <= year <= 2199:
+        total += 4
 
     result = total % 7
 
-    if result == 0:
-        return "Saturday"
-    elif result == 1:
-        return "Sunday"
-    elif result == 2:
-        return "Monday"
-    elif result == 3:
-        return "Tuesday"
-    elif result == 4:
-        return "Wednesday"
-    elif result == 5:
-        return "Thursday"
-    else:
-        return "Friday"
+    days = ["Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
+    return days[result]
 
 
 def main():
@@ -71,3 +62,4 @@ def main():
 
 
 main()
+
